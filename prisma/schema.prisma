@@ -38,7 +38,7 @@ model Book {
 }
 
 model Category {
-  id   String @unique @default(uuid())
+  id   String @id @default(uuid())
   name String
   Book Book[]
 }

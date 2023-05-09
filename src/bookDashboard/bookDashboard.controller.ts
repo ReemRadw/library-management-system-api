@@ -66,7 +66,6 @@ export class BookDashboardController {
     @Res() res: Response,
     @UploadedFile() file: Express.Multer.File,
   ) {
-    console.log('file', file);
     return this.bookDashboardService.createBook(res, createBook, file.filename);
   }
 

@@ -17,14 +17,14 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
   async signup(res, createUser: CreateUser) {
-    const newUser = await this.manageReader.createUser(createUser);
-    if (!newUser) {
+    const user = await this.manageReader.createUser(createUser);
+    if (!user) {
       return ResponseService.conflict(res, 'User already Exist');
     }
     const payload = { sub: createUser.email };
     const accessToken = await this.jwtService.signAsync(payload);
     return ResponseService.success(res, 'Email created successfully', {
-      newUser,
+      user,
       accessToken,
     });
   }
